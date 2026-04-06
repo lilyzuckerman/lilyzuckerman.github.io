@@ -1,0 +1,301 @@
+<html lang="en">
+<head>
+    <title>My Work — Lily Zuckerman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .work-hero {
+            padding: 60px 0 48px;
+            border-bottom: 3px solid #000;
+            margin-bottom: 56px;
+        }
+        .work-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+            font-size: clamp(52px, 7vw, 88px);
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px;
+            color: #000;
+        }
+        .work-hero h1 em { font-style: italic; }
+        .work-hero-desc {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--black);
+            max-width: 780px;
+            margin: 0;
+        }
+ 
+        /* Publications section */
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--black);
+            display: block;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #000;
+            margin: 0 0 0;
+        }
+ 
+        .pub-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            margin-bottom: 64px;
+        }
+ 
+        .pub-link {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 28px 24px;
+            border-right: 1px solid var(--gray-light);
+            border-bottom: 1px solid var(--gray-light);
+            text-decoration: none;
+            color: var(--black);
+            transition: background 0.15s;
+        }
+        .pub-link:last-child { border-right: none; }
+        .pub-link:hover { background: #fafafa; }
+ 
+        .pub-link-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+            color: var(--black);
+            line-height: 1.2;
+        }
+ 
+        .pub-link-role {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+ 
+        .pub-link-arrow {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--crimson);
+            margin-top: auto;
+            padding-top: 16px;
+        }
+ 
+        /* Articles section */
+        .articles-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--black);
+            display: block;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #000;
+            margin: 0 0 0;
+        }
+ 
+        .articles-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+ 
+        .article-card {
+            padding: 32px 28px;
+            border-right: 1px solid var(--gray-light);
+            border-bottom: 1px solid var(--gray-light);
+            text-decoration: none;
+            color: var(--black);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: background 0.15s;
+        }
+        .article-card:hover { background: #fafafa; }
+        .article-card:nth-child(3n) { border-right: none; }
+ 
+        .pub-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--crimson);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pub-tag::before {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 1.5px;
+            background: var(--crimson);
+            flex-shrink: 0;
+        }
+        .article-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--black);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .article-meta {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-top: auto;
+            padding-top: 8px;
+        }
+ 
+        @media (max-width: 900px) {
+            .pub-links { grid-template-columns: 1fr 1fr; }
+            .pub-link:nth-child(2) { border-right: none; }
+            .pub-link:nth-child(3) { border-right: 1px solid var(--gray-light); }
+            .pub-link:nth-child(3), .pub-link:nth-child(4) { border-bottom: none; }
+            .articles-list { grid-template-columns: 1fr 1fr; }
+            .article-card:nth-child(3n) { border-right: 1px solid var(--gray-light); }
+            .article-card:nth-child(2n) { border-right: none; }
+        }
+        @media (max-width: 600px) {
+            .pub-links { grid-template-columns: 1fr; }
+            .pub-link { border-right: none !important; }
+            .articles-list { grid-template-columns: 1fr; }
+            .article-card { border-right: none !important; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="top-bar">Portfolio &nbsp;·&nbsp; Lily Zuckerman</div>
+ 
+    <header>
+        <div class="header-inner">
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../about/index.html">About Me</a>
+                <a href="../final/index.html" target="_blank">Final</a>
+            </nav>
+            <a class="masthead" href="../index.html">Lily <em>Zuckerman</em></a>
+            <nav class="right">
+                <a href="../work/index.html">My Work</a>
+                <a href="../lily-zuckerman-resume.pdf" target="_blank">Resume</a>
+                <a href="../assignments/index.html" target="_blank">Assignments</a>
+            </nav>
+        </div>
+    </header>
+ 
+    <div class="page-wrapper">
+ 
+        <div class="work-hero">
+            <h1>My <em>Work.</em></h1>
+            <p class="work-hero-desc">Stories, features &amp; investigations spanning culture, politics, health, and community.</p>
+        </div>
+ 
+        <!-- Publications -->
+        <span class="section-label">Where I've Written</span>
+        <div class="pub-links">
+ 
+            <a class="pub-link" href="https://dailyorange.com/writers/lily-zuckerman/" target="_blank">
+                <span class="pub-link-name">The Daily Orange</span>
+                <span class="pub-link-role">Assistant Culture Editor</span>
+                <span class="pub-link-arrow">View all work →</span>
+            </a>
+ 
+            <a class="pub-link" href="https://www.silive.com/staff/lily-zuckerman/" target="_blank">
+                <span class="pub-link-name">Staten Island Advance</span>
+                <span class="pub-link-role">Newsroom Intern</span>
+                <span class="pub-link-arrow">View all work →</span>
+            </a>
+ 
+            <a class="pub-link" href="https://highlandscurrent.org/author/lzuckerman/" target="_blank">
+                <span class="pub-link-name">Highlands Current</span>
+                <span class="pub-link-role">Student Correspondent</span>
+                <span class="pub-link-arrow">View all work →</span>
+            </a>
+ 
+            <a class="pub-link" href="https://retroreport.org/author/lily-zuckerman/" target="_blank">
+                <span class="pub-link-name">Retro Report</span>
+                <span class="pub-link-role">Audience Engagement Intern</span>
+                <span class="pub-link-arrow">View all work →</span>
+            </a>
+ 
+        </div>
+ 
+        <!-- Selected articles -->
+        <span class="articles-label">Selected Articles</span>
+        <div class="articles-list">
+ 
+            <a class="article-card" href="https://dailyorange.com/2026/03/su-professors-student-loving-pups-ease-stress-with-wagging-tails/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">SU professors' student-loving pups ease stress with wagging tails</h2>
+                <div class="article-meta">March 2026 &nbsp;·&nbsp; Feature</div>
+            </a>
+ 
+            <a class="article-card" href="https://dailyorange.com/2026/02/syracuse-university-sorority-house-moms/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">'It's 24/7': Inside the lives of Panhellenic sorority house moms at SU</h2>
+                <div class="article-meta">February 2026 &nbsp;·&nbsp; Feature</div>
+            </a>
+ 
+            <a class="article-card" href="https://dailyorange.com/2026/01/center-for-the-creator-economy-su-influencers/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">Center for the Creator Economy legitimizes SU as influencer breeding ground</h2>
+                <div class="article-meta">January 2026 &nbsp;·&nbsp; Culture</div>
+            </a>
+ 
+            <a class="article-card" href="https://dailyorange.com/2025/04/block-party-2025-latto-rolemodel/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">Block Party 2025: Latto &amp; Role Model</h2>
+                <div class="article-meta">April 2025 &nbsp;·&nbsp; Culture</div>
+            </a>
+ 
+            <a class="article-card" href="https://dailyorange.com/2025/02/orange-plate-feeds-su-students/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">Orange Plate feeds SU students</h2>
+                <div class="article-meta">February 2025 &nbsp;·&nbsp; News</div>
+            </a>
+
+             <a class="article-card" href="https://dailyorange.com/2025/12/students-fashion-lids-for-crouse-hill/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">Students fashion lids for Crouse Hill</h2>
+                <div class="article-meta">December 2025 &nbsp;·&nbsp; Feature</div>
+            </a>
+ 
+            <a class="article-card" href="https://dailyorange.com/2025/02/snl-50-anniversary-special-episode/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">SNL 50th anniversary special episode</h2>
+                <div class="article-meta">February 2025 &nbsp;·&nbsp; Culture</div>
+            </a>
+
+             <a class="article-card" href="https://dailyorange.com/2025/11/utica-greens-the-italian-staple-syracuse-shares-with-central-new-york/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">Utica greens: The Italian staple Syracuse shares with Central New York</h2>
+                <div class="article-meta">November 2025 &nbsp;·&nbsp; Food</div>
+            </a>
+ 
+            <a class="article-card" href="https://dailyorange.com/2025/10/the-bachelor-star-brings-la-style-social-club-to-syracuse-with-the-society/" target="_blank">
+                <span class="pub-tag">The Daily Orange</span>
+                <h2 class="article-headline">'The Bachelor' star brings LA-style social club to Syracuse with The Society</h2>
+                <div class="article-meta">October 2025 &nbsp;·&nbsp; Culture</div>
+            </a>
+ 
+        </div>
+    </div>
+ 
+</body>
+</html>
