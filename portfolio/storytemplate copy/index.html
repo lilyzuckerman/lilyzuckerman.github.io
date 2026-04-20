@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Story Template</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* Story-specific styles that extend your style.css */
+
+        .story-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-deck {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #555;
+            line-height: 1.65;
+            border-left: 2px solid #1a1a1a;
+            padding-left: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Byline — matches your index.html byline exactly */
+        .byline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+        }
+        .byline-monogram {
+            width: 38px;
+            height: 38px;
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .byline-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #555;
+            flex: 1;
+        }
+        .byline-text strong { color: #1a1a1a; }
+        .byline-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            color: #999;
+        }
+        /* Photo credit line under images */
+        .photo-credit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: #bbb;
+            display: block;
+            margin-top: 0.3rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Image placeholders — swap these for real <img> tags */
+        .img-placeholder {
+            background: #e8e5e0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #bbb;
+        }
+        .img-hero    { aspect-ratio: 16 / 9; }
+        .img-inline  { aspect-ratio: 4 / 3; }
+        .img-portrait{ aspect-ratio: 3 / 4; }
+
+        figcaption {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: #999;
+            line-height: 1.5;
+            margin-top: 0.3rem;
+        }
+
+        /* Body text */
+        .story-body p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.02rem;
+            line-height: 1.85;
+            color: #1a1a1a;
+            margin-bottom: 1.4rem;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            font-weight: 900;
+            line-height: 1.3;
+            border-top: 2px solid #1a1a1a;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 1.1rem 0;
+            margin: 2rem 0;
+        }
+        .pull-quote cite {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* Sidebar */
+        .story-sidebar {
+            border-left: 2px solid #1a1a1a;
+            padding-left: 1.25rem;
+        }
+        .story-sidebar h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        .story-sidebar p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+        .story-sidebar a { color: #1a1a1a; }
+        .sidebar-rule { border: none; border-top: 1px solid #ddd; margin: 1rem 0; }
+
+        /* Data viz placeholder */
+        .dataviz-wrap {
+            background: #f2efe9;
+            border: 2px dashed #ccc;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+        .dv-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #bbb;
+        }
+        .dv-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 900;
+            color: #777;
+            margin-top: 0.4rem;
+        }
+        .dataviz-note {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.67rem;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Section label */
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.4rem;
+        }
+
+        .rule-heavy { border: none; border-top: 2px solid #1a1a1a; margin: 2rem 0; }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR (matches your index.html) -->
+    <div class="top-bar">Portfolio &nbsp;·&nbsp; Lily Zuckerman</div>
+
+    <!-- HEADER — stays OUTSIDE the Bootstrap grid so it spans full width -->
+    <header>
+        <div class="header-inner">
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../about/index.html">About Me</a>
+                <a href="../final/index.html" target="_blank">Final</a>
+            </nav>
+            <a class="masthead" href="../index.html">Lily <em>Zuckerman</em></a>
+            <nav class="right">
+                <a href="../work/index.html">My Work</a>
+                <a href="../lily-zuckerman-resume.pdf" target="_blank">Resume</a>
+                <a href="../assignments/index.html" target="_blank">Assignments</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         BOOTSTRAP GRID — all story content goes here
+    ═══════════════════════════════════════════ -->
+    <div class="container" style="padding-left: 2rem; padding-right: 2rem; margin-top: 2rem;">
+
+        <!-- ROW 1 · Headline + Deck -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <p class="section-label">Section &nbsp;·&nbsp; Category</p>
+                <h1 class="story-headline">A headline goes here.</h1>
+                <p class="story-deck">A dek that describes the story that draws the reader in and sets up what the story is about and why it matters to the audience.</p>
+            </div>
+        </div><!-- /row 1 -->
+
+        <!-- ROW 2 · Hero image -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <figure>
+                    <!-- SWAP: replace the div below with <img src="your-image.jpg" alt="Description"> -->
+                    <div class="img-placeholder img-hero">Hero image goes here (16:9)</div>
+                    <figcaption>Caption describing the image and why it matters to the story.</figcaption>
+                    <span class="photo-credit">Photo: Photographer Name / Organization</span>
+                </figure>
+            </div>
+        </div><!-- /row 2 -->
+
+        <!-- ROW 3 · Byline -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="byline">
+                    <div class="byline-monogram">TK</div>
+                    <div class="byline-text">By <strong>Writer Name</strong> &nbsp;·&nbsp; Staff Reporter</div>
+                    <div class="byline-date">April 13, 2026</div>
+                </div>
+            </div>
+        </div><!-- /row 3 -->
+
+        <!-- ROW 4 · Image (left) + Text (right) — same col-md-10 col-lg-8 as hero -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="row g-3">
+
+                    <!-- First column — text (LEFT) -->
+                    <div class="col-12 col-md-6 story-body">
+                        <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+                        <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+                    </div>
+
+                    <!-- Second column — image (RIGHT) -->
+                    <div class="col-12 col-md-6">
+                        <figure>
+                            <!-- SWAP: replace the div below with <img src="your-image.jpg" alt="Description"> -->
+                            <div class="img-placeholder img-inline">Inline image goes here (4:3)</div>
+                            <figcaption>Caption for this inline image.</figcaption>
+                            <span class="photo-credit">Photo: Photographer Name</span>
+                        </figure>
+                    </div>
+
+                </div><!-- /inner row -->
+            </div>
+        </div><!-- /row 4 -->
+
+        <!-- ROW 5 · Body text + Sidebar — same col-md-10 col-lg-8 as hero -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="row g-3">
+
+                    <!-- Main body copy -->
+                    <div class="col-12 col-md-7 story-body" style="padding-right: 1.5rem;">
+
+                <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+                <!-- Pull quote -->
+                <blockquote class="pull-quote">
+                    "A memorable quote from a source or a striking line pulled from the story goes right here."
+                    <cite>— Source Name, Title or Organization</cite>
+                </blockquote>
+
+                <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+                <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+            </div>
+
+                    <!-- Sidebar (5 of 12 inside the col-md-10) -->
+                    <div class="col-12 col-md-5">
+                        <div class="story-sidebar">
+                            <h4>Key context</h4>
+                            <p>A short background fact or secondary detail that adds context without interrupting the main narrative.</p>
+                            <hr class="sidebar-rule">
+                            <h4>By the numbers</h4>
+                            <p>A related statistic or quick data point worth spotlighting for readers.</p>
+                            <hr class="sidebar-rule">
+                            <h4>Related</h4>
+                            <p><a href="#">Link to a related story or resource here.</a></p>
+                        </div>
+                    </div>
+
+                </div><!-- /inner row -->
+            </div>
+        </div><!-- /row 5 -->
+
+        <!-- ROW 6 · Data visualization -->
+        <div class="row justify-content-center" style="margin-top: 2rem;">
+            <div class="col-12 col-md-10 col-lg-8">
+                <p class="section-label">Data &nbsp;·&nbsp; Visualization</p>
+                <div class="dataviz-wrap">
+                    <!-- SWAP: replace this block with your chart embed, iframe, or JS chart -->
+                    <div class="dv-label">Chart / Graph / Map / Table</div>
+                    <div class="dv-title">Chart title or data visualization headline goes here</div>
+                </div>
+                <p class="dataviz-note">Source: Organization or dataset name &nbsp;·&nbsp; Note: Any methodology note goes here.</p>
+            </div>
+        </div><!-- /row 6 -->
+
+        <!-- ROW 7 · More body text (your second text-only row, fixed) -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+            <div class="col-12 col-md-10 col-lg-8 story-body">
+
+                <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+                <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+            </div>
+        </div><!-- /row 7 -->
+
+        <!-- ROW 8 · Portrait image (left) + closing text (right) -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3" style="padding-right: 1.5rem;">
+                <figure>
+                    <!-- SWAP: replace the div below with <img src="your-image.jpg" alt="Description"> -->
+                    <div class="img-placeholder img-portrait">Portrait image (3:4)</div>
+                    <figcaption>Caption: name and title of person pictured.</figcaption>
+                    <span class="photo-credit">Photo: Photographer Name</span>
+                </figure>
+            </div>
+
+            <div class="col-12 col-sm-7 col-md-6 col-lg-5 story-body">
+                <p>Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+
+                <p>Closing paragraph — the kicker. Often ends with a quote, a forward-looking statement, or a memorable final line. Text goes here. Text goes here. Text goes here. Text goes here.</p>
+            </div>
+
+        </div><!-- /row 8 -->
+
+    </div><!-- /container -->
+
+    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ1G54DsyINjVc3gMDUg0zNIoCXgSQUhrxenNVprgcjJIjhyZgwyt46Bv9mrOx5_eJrnunURSwcoRuH&font=Default&lang=en&initial_zoom=2&width=100%25&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>
