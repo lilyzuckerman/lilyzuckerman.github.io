@@ -1,1 +1,412 @@
-Coming soon...
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* Story-specific styles that extend your style.css */
+
+        .story-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-deck {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #555;
+            line-height: 1.65;
+            border-left: 2px solid #1a1a1a;
+            padding-left: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Byline — matches your index.html byline exactly */
+        .byline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+        }
+        .byline-monogram {
+            width: 38px;
+            height: 38px;
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .byline-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #555;
+            flex: 1;
+        }
+        .byline-text strong { color: #1a1a1a; }
+        .byline-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            color: #999;
+        }
+        /* Photo credit line under images */
+        .photo-credit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: #bbb;
+            display: block;
+            margin-top: 0.3rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Image placeholders — swap these for real <img> tags */
+        .img-placeholder {
+            background: #e8e5e0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #bbb;
+        }
+        .img-hero    { aspect-ratio: 16 / 9; }
+        .img-inline  { aspect-ratio: 4 / 3; }
+        .img-portrait{ aspect-ratio: 3 / 4; }
+
+        figcaption {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: #999;
+            line-height: 1.5;
+            margin-top: 0.3rem;
+        }
+
+        /* Body text */
+        .story-body p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.02rem;
+            line-height: 1.85;
+            color: #1a1a1a;
+            margin-bottom: 1.4rem;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            font-weight: 900;
+            line-height: 1.3;
+            border-top: 2px solid #1a1a1a;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 1.1rem 0;
+            margin: 2rem 0;
+        }
+        .pull-quote cite {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* Sidebar */
+        .story-sidebar {
+            border-left: 2px solid #1a1a1a;
+            padding-left: 1.25rem;
+        }
+        .story-sidebar h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        .story-sidebar p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+        .story-sidebar a { color: #1a1a1a; }
+        .sidebar-rule { border: none; border-top: 1px solid #ddd; margin: 1rem 0; }
+
+        /* Data viz placeholder */
+        .dataviz-wrap {
+            margin-bottom: 1.5rem;
+        }
+        .dv-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #bbb;
+        }
+        .dv-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 900;
+            color: #777;
+            margin-top: 0.4rem;
+        }
+        .dataviz-note {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.67rem;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Section label */
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.4rem;
+        }
+
+        .rule-heavy { border: none; border-top: 2px solid #1a1a1a; margin: 2rem 0; }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR (matches your index.html) -->
+    <div class="top-bar">Portfolio &nbsp;·&nbsp; Lily Zuckerman</div>
+
+    <!-- HEADER — stays OUTSIDE the Bootstrap grid so it spans full width -->
+    <header>
+        <div class="header-inner">
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../about/index.html">About Me</a>
+                <a href="index.html" target="_blank">Final</a>
+            </nav>
+            <a class="masthead" href="../index.html">Lily <em>Zuckerman</em></a>
+            <nav class="right">
+                <a href="../work/index.html">My Work</a>
+                <a href="../lily-zuckerman-resume.pdf" target="_blank">Resume</a>
+                <a href="../assignments/index.html" target="_blank">Assignments</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         BOOTSTRAP GRID — all story content goes here
+    ═══════════════════════════════════════════ -->
+    <div class="container" style="padding-left: 2rem; padding-right: 2rem; margin-top: 2rem;">
+
+        <!-- ROW 1 · Headline + Deck -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <p class="section-label">JNL 221 &nbsp;·&nbsp; Final Project</p>
+                <h1 class="story-headline">The collapse of local news in the United States</h1>
+                <p class="story-deck">As local newspapers shutter and counties become news deserts, some residents have no idea the stories that then go untold.</p>
+            </div>
+        </div><!-- /row 1 -->
+
+        <!-- ROW 2 · Hero image -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <figure>
+                    <!-- SWAP: replace the div below with <img src="your-image.jpg" alt="Description"> -->
+                    <img src="../heroimage.jpg" alt="Torn newspaper clippings on yellow background" style="width:100%; aspect-ratio: 16/9; object-fit: cover;">
+                    <figcaption>Torn newspaper clippings represent a harsh reality for the state of local news in the United States. The collage of newspaper clippings shows the fragmented state of local news.</figcaption>
+                    <span class="photo-credit">Photo: Lily Zuckerman</span>
+                </figure>
+            </div>
+        </div><!-- /row 2 -->
+
+        <!-- ROW 3 · Byline -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="byline">
+                    <div class="byline-monogram">LZ</div>
+                    <div class="byline-text">By <strong>Lily Zuckerman</strong> &nbsp;·&nbsp; Newhouse School sophomore</div>
+                    <div class="byline-date">May 4, 2026</div>
+                </div>
+            </div>
+        </div><!-- /row 3 -->
+
+        <!-- ROW 4 · Image (left) + Text (right) — same col-md-10 col-lg-8 as hero -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="row g-3">
+
+                    <!-- First column — text (LEFT) -->
+                    <div class="col-12 col-md-6 story-body">
+                        <p>School board meetings. City council meetings. Crime. Soccer games. Policies. Wrongdoings of County officials. These are just a few of the topics and events that are going uncovered with the loss of local news around the country. </p>
+
+                        <p>Across the United States, newspapers are shuttering and local news is declining. The loss of local news has only worsened over the past 20 years.</p>
+                    </div>
+
+                    <!-- Second column — image (RIGHT) -->
+                    <div class="col-12 col-md-6">
+                        <figure>
+                            <!-- SWAP: replace the div below with <img src="your-image.jpg" alt="Description"> -->
+                            <img src="../inlineimage.jpg" alt="State of Local News" style="width:100%;">
+                            <figcaption>Over the last 20 years, the United States has increasingly lost more and more local newspapers.</figcaption>
+                            <span class="photo-credit">Photo: Lily Zuckerman</span>
+                        </figure>
+                    </div>
+
+                </div><!-- /inner row -->
+            </div>
+        </div><!-- /row 4 -->
+
+        <!-- ROW 5 · Body text + Sidebar — same col-md-10 col-lg-8 as hero -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="row g-3">
+
+                    <!-- Main body copy -->
+                    <div class="col-12 col-md-7 story-body" style="padding-right: 1.5rem;">
+                         <p>But many residents of the United States are completely unaware of the situation. Approximately 71 percent of Americans believe that their local news outlets are financially thriving, <a href="https://www.pewresearch.org/journalism/2019/03/26/for-local-news-americans-embrace-digital-but-still-want-strong-community-connection/">according to a Pew Research survey.</a></p>
+
+                <!-- Pull quote -->
+                <blockquote class="pull-quote">
+                    "Local newsrooms are often the holders and the archives of the institutional memory of a community, and they allow a community a way to see themselves and establish their own identities."
+                    <cite>— Zachary Metzger, State of Local News Project</cite>
+                </blockquote>
+
+                <p>“But when a newsroom does disappear in these rural areas, there aren't many other alternatives and there aren't necessarily viable pathways to establishing those alternatives. I think that rural areas are at this point of precarity,” Zachary Metzger, <a href="https://localnewsinitiative.northwestern.edu/people/zach-metzger/">Director of the State of Local News Project</a>, said.</p>
+
+                <p>Metzger, who leads the Medill School of Journalism’s State of Local News Project has seen a massive decline in the number of newspapers since he even started working for the initiative in 2020.</p>
+
+            </div>
+
+                    <!-- Sidebar (5 of 12 inside the col-md-10) -->
+                    <div class="col-12 col-md-5">
+                        <div class="story-sidebar">
+                            <h4>Key context</h4>
+                            <p>Since 2005, the State of Local News Project has been studying the loss of local news around the United States.</p>
+                            <hr class="sidebar-rule">
+                            <h4>By the numbers</h4>
+                            <p>Since 2005, the United States has lost nearly 3,000 local newspapers.</p>
+                            <hr class="sidebar-rule">
+                            <h4>Related</h4>
+                            <p><a href="https://www.theajp.org/news-insights/the-state-of-local-news-and-why-it-matters/" target="_blank">The State of Local News and Why It Matters — AJP</a></p>
+                        </div>
+                    </div>
+
+                </div><!-- /inner row -->
+            </div>
+        </div><!-- /row 5 -->
+
+        <!-- ROW 6 · Data visualization -->
+        <div class="row justify-content-center" style="margin-top: 2rem;">
+            <div class="col-12 col-md-10 col-lg-8">
+             <iframe title="Local news outlets per U.S. county" aria-label="Choropleth map" id="datawrapper-chart-KmfdY" src="https://datawrapper.dwcdn.net/KmfdY/7/" scrolling="no" frameborder="0" style="border: none;" width="700" height="568" data-external="1"></iframe>
+        </div>
+    </div>
+</div><!-- /row 6 -->
+
+        <!-- ROW 7 · More body text (your second text-only row, fixed) -->
+        <div class="row justify-content-center" style="margin-top: 1rem;">
+            <div class="col-12 col-md-10 col-lg-8 story-body">
+
+                <p>Some U.S. counties have already become news deserts — meaning a community, either rural or urban, with limited to no access to credible, comprehensive local news and information.</p>
+
+                <p>From the transition of print to digital news to less civic engagement, there are several different reasons for the decline of local news outlets. Some people, like Metzger, believe that private equity firms and social media are the main culprits for the loss of local news.</p>
+
+                <p>For example, Alden Global Capital — a mysterious private equity firm — <a href="https://www.theatlantic.com/magazine/archive/2021/11/alden-global-capital-killing-americas-newspapers/620171/">that bought out some of America’s most popular local newspapers</a>, acquiring MediaNews Group and Tribune Publishing. The firm controls newspaper names like the Chicago Tribune, New York Daily News, Orlando Sentinel, San Diego Union-Tribune, The Baltimore Sun, The Denver Post, The Mercury News and <a href="https://localnewsinitiative.northwestern.edu/posts/2026/02/09/daily-herald-alden-capital-shaw-media/">more</a>.</p>
+
+                <p>Other factors that Metzger attributes to local news’ decay is the reliance on social media for news, which he said leads to fake news. Instead of the local reporter, there’s now the local <a href="https://www.niemanlab.org/2022/12/citizen-journalism-but-make-it-equitable/">citizen journalist</a> that you see as you scroll on social media.</p>
+
+                <p>Since studying the dissemination of local news at the State of Local News Project, Metzger has seen a forgiving way for local news to survive: nonprofit newsrooms.</p>
+
+                <p>While nonprofits newsrooms are a promising direction for local news, Metzger said they still need a way to generate readers, generate audiences, convert casual readers into longtime subscribers and potentially longtime donors.</p>
+
+                <p>But in the efforts to save the state of local journalism in the United States, suburban and urban areas receive more attention than rural communities, where there tends to be less newspapers and reporters in general.</p>
+
+                <p>“Local newsrooms are often the holders and the archives of the institutional memory of a community, and they allow a community a way to see themselves and establish their own identities,” Metzger said. “So when that newsroom vanishes, that sense of place, and that sense of a community identity becomes more fractured and difficult to maintain.”</p>
+
+                <p>Some states have felt the loss of local news more than others. Nonetheless, in the past year, Metzger said he’s seen more and more independent, family-owned newspapers in rural areas and small towns closing around the country.</p>
+
+                <p>A common trend around the country is the mass consolidations and closures of local newspapers, which were “most hyperlocal papers were the ones that broke stories, because they were the ones that were the most heavily integrated into their communities and knew what was going on,” Metzger said.</p>
+
+                <p>To supplement the loss of beat reporters and local newspapers, Metzger’s seen a rise in the “citizen journalist” and more of the “creator” journalist. But there are some drawbacks when it comes to these new journalist types. Oftentimes, a citizen journalist is untrained and simply reporting on a scene — instead of interviewing sources with care and diligence, they often film without context or permission.</p>
+
+                <p>So, with fewer trained journalists to work at local newspapers, the emergence of more citizen journalists increases the risk of fake news in the media ecosystem. Also, the loss of local newsrooms has led to more for-profit newsrooms becoming nonprofit newsrooms. </p> 
+
+                <p> Metzger said there are both tangible and intangible effects that arise with the loss of local journalism and the increase in news deserts. Some of the tangible effects include political issues, tax increases, lack of civic engagement and more. The intangible consequences that happen include socio-political economic problems that are not as obvious to the naked eye. </p>
+
+            </div>
+        </div><!-- /row 7 -->
+
+<!-- ROW 8 · Closing text (left) + Table (right) -->
+<div class="row justify-content-center" style="margin-top: 1rem;">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="row g-3">
+
+            <!-- Closing text LEFT -->
+            <div class="col-12 col-md-6 story-body">
+                <p>As individual creators rush to fill the void left by shrinking newspapers, the impact is uneven and often bypasses the places that need coverage the most.</p>
+
+                <p>"What's interesting is the extent to which that coverage becomes local. The ones that are localized tend to be in more urban areas where there are already a lot of other news sources. They're not really emerging in the rural or poorer communities where we're seeing lack of news access be a problem," Metzger said.</p>
+            </div>
+
+            <!-- Table RIGHT -->
+            <div class="col-12 col-md-6">
+                <iframe title="States hit the hardest by newspaper closures 2005-2026" 
+                aria-label="Table" id="datawrapper-chart-C57Gw" 
+                src="https://datawrapper.dwcdn.net/C57Gw/1/" 
+                scrolling="no" frameborder="0" 
+                style="border: none; width: 100%;" 
+                height="417" data-external="1"></iframe>
+            </div>
+
+        </div><!-- /inner row -->
+    </div>
+</div><!-- /row 8 -->
+        <!-- ROW 9 · Second data visualization -->
+<div class="row justify-content-center" style="margin-top: 2rem;">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="dataviz-wrap">
+            <iframe title="2005 to 2026: Newspaper count per state" aria-label="Range Plot" id="datawrapper-chart-Nuf6C" src="https://datawrapper.dwcdn.net/Nuf6C/2/" scrolling="no" frameborder="0" style="border: none; width: 100%; height: 1086px;" data-external="1"></iframe>
+        </div>
+    </div>
+</div><!-- /row 9 -->
+
+    </div><!-- /container -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>
